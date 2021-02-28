@@ -61,7 +61,7 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.nataliele.connect4.HelloWorldApplication</mainClass>
+                                    <mainClass>com.nataliele.connect4.GameApplication</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
