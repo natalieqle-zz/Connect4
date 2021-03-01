@@ -26,7 +26,8 @@ public class GameApplication extends Application<GameConfiguration> {
         final GameResource resource = new GameResource(
                 configuration.getGridWidth(),
                 configuration.getGridHeight(),
-                configuration.getNumPlayers()
+                configuration.getNumPlayers(),
+                configuration.getWinCondition()
         );
         environment.jersey().register(resource);
     }

@@ -1,3 +1,4 @@
 gridWidth: 4
 gridHeight: 4
 numPlayers: 2
+winCondition: 4

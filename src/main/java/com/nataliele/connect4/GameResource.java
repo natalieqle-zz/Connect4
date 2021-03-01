@@ -9,12 +9,14 @@ public class GameResource {
     private final int gridWidth;
     private final int gridHeight;
     private final int numPlayers;
+    private final int winCondition;
 
-    public GameResource(int gridWidth, int gridHeight, int numPlayers) {
-        this.coordinator = new Coordinator(gridWidth, gridHeight, numPlayers);
+    public GameResource(int gridWidth, int gridHeight, int numPlayers, int winCondition) {
+        this.coordinator = new Coordinator(gridWidth, gridHeight, numPlayers, winCondition);
         this.gridWidth = gridWidth;
         this.gridHeight = gridHeight;
         this.numPlayers = numPlayers;
+        this.winCondition = winCondition;
     }
 
     @POST
@@ -35,6 +37,6 @@ public class GameResource {
     @Path("/restart")
     @Produces(MediaType.APPLICATION_JSON)
     public void restartGame() {
-        this.coordinator = new Coordinator(gridWidth, gridHeight, numPlayers);
+        this.coordinator = new Coordinator(gridWidth, gridHeight, numPlayers, winCondition);
     }
 }

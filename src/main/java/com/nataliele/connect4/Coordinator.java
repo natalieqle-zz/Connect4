@@ -8,8 +8,8 @@ public class Coordinator {
     private String message;
     private boolean isGameOver;
 
-    public Coordinator(int gridWidth, int gridHeight, int numPlayers) {
-        this.grid = new Grid(gridWidth, gridHeight);
+    public Coordinator(int gridWidth, int gridHeight, int numPlayers, int winCondition) {
+        this.grid = new Grid(gridWidth, gridHeight, winCondition);
         this.numPlayers = numPlayers;
         this.currentPlayer = 1;
         this.message = "";
@@ -32,8 +32,8 @@ public class Coordinator {
                     isGameOver = true;
                 }
             }
-        } catch (IllegalStateException ex) {
-            message = ex.getMessage();
+        } catch (IllegalArgumentException | IllegalStateException ex) {
+            message = String.format("%s. Try again!", ex.getMessage());
         }
     }
 

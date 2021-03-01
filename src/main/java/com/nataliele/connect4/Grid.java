@@ -11,22 +11,27 @@ public class Grid {
 
     private int[][] placement;
     private String[] representation;
+    private final int winCondition;
     private Map<Integer, Set<TokenLocation>> placedTokens;
     private int remainingSpots;
 
-    public Grid() {
-        // Jackson deserialization
-    }
+//    public Grid() {
+//        // Jackson deserialization
+//    }
 
-    public Grid(int width, int height) {
-        this.placement = new int[width][height];
+    public Grid(int width, int height, int winCondition) {
+        this.placement = new int[height][width];
         this.representation = new String[height];
+        this.winCondition = winCondition;
         this.placedTokens = new HashMap<>();
         this.remainingSpots = width * height;
     }
 
     public void dropToken(int col, int player) {
         col--; // not zero-based for (user) clarity
+        if (col < 0 || col >= placement[0].length) {
+            throw new IllegalArgumentException("Cannot drop token in a nonexistent column");
+        }
         for (int row = placement.length - 1; row >= 0; row--) {
             if (placement[row][col] == 0) {
                 placement[row][col] = player;
@@ -36,7 +41,7 @@ public class Grid {
                 return;
             }
         }
-        throw new IllegalStateException("Cannot drop token in full column.");
+        throw new IllegalStateException("Cannot drop token in full column");
     }
 
     @JsonProperty
@@ -81,7 +86,7 @@ public class Grid {
     }
 
     private boolean checkForWin(TokenLocation tokenLocation, int player, int xDist, int yDist, int consecutive) {
-        if (consecutive == 4) {
+        if (consecutive == winCondition) {
             return true;
         }
         int currRow = tokenLocation.getRow() + xDist;
