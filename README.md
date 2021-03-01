@@ -14,7 +14,7 @@ java -jar target/connect4-1.0-SNAPSHOT.jar server connect4.yml
 The above example contains the example config, `connect4.yml`, but any YAML file that follows its structure can be used.
 
 ## Playing The Game
-To view the grid, see whose turn it is, and view the winner, refresh `http://localhost:8080/connect-4/grid` throughout the game.
+To view the grid, current player, and additional messages, refresh `http://localhost:8080/connect-4/grid` throughout the game.
 
 To drop a token in a certain column (1-indexed):
 ```aidl
