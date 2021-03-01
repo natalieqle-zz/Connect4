@@ -1,4 +1,4 @@
-package com.nataliele.connect4;
+package com.nataliele.connect4.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

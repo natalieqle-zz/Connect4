@@ -1,6 +1,9 @@
-package com.nataliele.connect4;
+package com.nataliele.connect4.orchestration;
 
-public class Coordinator {
+import com.nataliele.connect4.grid.Grid;
+import com.nataliele.connect4.grid.GridView;
+
+public class Orchestrator {
 
     private Grid grid;
     private final int numPlayers;
@@ -8,7 +11,7 @@ public class Coordinator {
     private String message;
     private boolean isGameOver;
 
-    public Coordinator(int gridWidth, int gridHeight, int numPlayers, int winCondition) {
+    public Orchestrator(int gridWidth, int gridHeight, int numPlayers, int winCondition) {
         this.grid = new Grid(gridWidth, gridHeight, winCondition);
         this.numPlayers = numPlayers;
         this.currentPlayer = 1;

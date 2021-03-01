@@ -1,5 +1,6 @@
 package com.nataliele.connect4;
 
+import com.nataliele.connect4.configs.GameConfiguration;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;

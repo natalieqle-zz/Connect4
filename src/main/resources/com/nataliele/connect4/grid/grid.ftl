@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="" type="com.nataliele.connect4.GridView" -->
+<#-- @ftlvariable name="" type="com.nataliele.connect4.grid.GridView" -->
 <html>
     <h1>Turn: Player ${currentPlayer}</h1>
     <h3>${message}</h3>

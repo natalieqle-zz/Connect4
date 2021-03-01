@@ -1,4 +1,4 @@
-package com.nataliele.connect4;
+package com.nataliele.connect4.grid;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -14,10 +14,6 @@ public class Grid {
     private final int winCondition;
     private Map<Integer, Set<TokenLocation>> placedTokens;
     private int remainingSpots;
-
-//    public Grid() {
-//        // Jackson deserialization
-//    }
 
     public Grid(int width, int height, int winCondition) {
         this.placement = new int[height][width];

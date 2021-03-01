@@ -1,4 +1,4 @@
-package com.nataliele.connect4;
+package com.nataliele.connect4.configs;
 
 import io.dropwizard.Configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,4 +1,4 @@
-package com.nataliele.connect4;
+package com.nataliele.connect4.grid;
 
 import io.dropwizard.views.View;
 
