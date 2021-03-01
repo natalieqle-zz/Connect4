@@ -5,10 +5,16 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/connect-4")
 public class GameResource {
-    private final Coordinator coordinator;
+    private Coordinator coordinator;
+    private final int gridWidth;
+    private final int gridHeight;
+    private final int numPlayers;
 
     public GameResource(int gridWidth, int gridHeight, int numPlayers) {
         this.coordinator = new Coordinator(gridWidth, gridHeight, numPlayers);
+        this.gridWidth = gridWidth;
+        this.gridHeight = gridHeight;
+        this.numPlayers = numPlayers;
     }
 
     @POST
@@ -22,6 +28,13 @@ public class GameResource {
     @Path("/grid")
     @Produces(MediaType.TEXT_HTML)
     public GridView getGrid() {
-        return new GridView(coordinator.getGrid());
+        return coordinator.getGridView();
+    }
+
+    @PUT
+    @Path("/restart")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void restartGame() {
+        this.coordinator = new Coordinator(gridWidth, gridHeight, numPlayers);
     }
 }
