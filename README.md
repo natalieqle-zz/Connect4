@@ -11,7 +11,7 @@ Run the jar with a YAML containing your desired config.
 ```aidl
 java -jar target/connect4-1.0-SNAPSHOT.jar server connect4.yml
 ```
-The above example contains the example config, `connect4.yml`, but any YAML file that follows its structure can be used.
+The above example contains the example config, [connect4.yml](https://github.com/natalieqle/Connect4/blob/master/connect4.yml), but any YAML file that follows its structure can be used.
 
 ## Playing The Game
 To view the grid, current player, and additional messages, refresh `http://localhost:8080/connect-4/grid` throughout the game.
