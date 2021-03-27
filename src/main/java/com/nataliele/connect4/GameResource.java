@@ -2,7 +2,7 @@ package com.nataliele.connect4;
 
 import com.nataliele.connect4.grid.GridView;
 import com.nataliele.connect4.orchestration.Orchestrator;
-import com.nataliele.connect4.requests.TokenLocation;
+import com.nataliele.connect4.requests.Turn;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -26,8 +26,8 @@ public class GameResource {
     @POST
     @Path("/play")
     @Produces(MediaType.APPLICATION_JSON)
-    public void dropToken(TokenLocation tokenLocation) {
-        orchestrator.dropToken(tokenLocation.getColumn());
+    public void dropToken(Turn turn) {
+        orchestrator.dropToken(turn.getColumn());
     }
 
     @GET

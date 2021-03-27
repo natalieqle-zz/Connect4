@@ -2,17 +2,17 @@ package com.nataliele.connect4.grid;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Grid {
 
     private int[][] placement;
     private String[] representation;
     private final int winCondition;
-    private Map<Integer, Set<TokenLocation>> placedTokens;
+    private Map<Integer, List<TokenLocation>> placedTokens;
     private int remainingSpots;
 
     public Grid(int width, int height, int winCondition) {
@@ -32,7 +32,7 @@ public class Grid {
             if (placement[row][col] == 0) {
                 placement[row][col] = player;
                 TokenLocation tokenLocation = new TokenLocation(row, col);
-                placedTokens.computeIfAbsent(player, k -> new HashSet<>()).add(tokenLocation);
+                placedTokens.computeIfAbsent(player, k -> new ArrayList<>()).add(tokenLocation);
                 remainingSpots--;
                 return;
             }
@@ -66,19 +66,16 @@ public class Grid {
     }
 
     public boolean hasWinner(int currentPlayer) {
-        for (TokenLocation tokenLocation : placedTokens.get(currentPlayer)) {
-            if (checkForWin(tokenLocation, currentPlayer, 1, 0, 1) ||
-                    checkForWin(tokenLocation, currentPlayer, 1, 1, 1) ||
-                    checkForWin(tokenLocation, currentPlayer, 0, 1, 1) ||
-                    checkForWin(tokenLocation, currentPlayer, -1, 1, 1) ||
-                    checkForWin(tokenLocation, currentPlayer, -1, 0, 1) ||
-                    checkForWin(tokenLocation, currentPlayer, -1, -1, 1) ||
-                    checkForWin(tokenLocation, currentPlayer, 0, -1, 1) ||
-                    checkForWin(tokenLocation, currentPlayer, 1, -1, 1)) {
-                return true;
-            }
-        }
-        return false;
+        List<TokenLocation> tokens = placedTokens.get(currentPlayer);
+        TokenLocation lastPlaced = tokens.get(tokens.size() - 1);
+        return checkForWin(lastPlaced, currentPlayer, 1, 0, 1) ||
+                checkForWin(lastPlaced, currentPlayer, 1, 1, 1) ||
+                checkForWin(lastPlaced, currentPlayer, 0, 1, 1) ||
+                checkForWin(lastPlaced, currentPlayer, -1, 1, 1) ||
+                checkForWin(lastPlaced, currentPlayer, -1, 0, 1) ||
+                checkForWin(lastPlaced, currentPlayer, -1, -1, 1) ||
+                checkForWin(lastPlaced, currentPlayer, 0, -1, 1) ||
+                checkForWin(lastPlaced, currentPlayer, 1, -1, 1);
     }
 
     private boolean checkForWin(TokenLocation tokenLocation, int player, int xDist, int yDist, int consecutive) {

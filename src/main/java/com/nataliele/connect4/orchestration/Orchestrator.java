@@ -44,10 +44,6 @@ public class Orchestrator {
         return new GridView(grid, currentPlayer, message);
     }
 
-    private boolean checkForWinner() {
-        return true;
-    }
-
     private void advanceTurn() {
         currentPlayer++;
         if (currentPlayer > numPlayers) {
